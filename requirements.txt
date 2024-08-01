@@ -1,0 +1,14 @@
+torch
+torchvision
+torchaudio
+transformers
+datasets
+evaluate
+accelerate
+librosa
+soundfile
+Pillow
+pytesseract
+numpy
+bitsandbytes
+gradio
