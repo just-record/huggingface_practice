@@ -148,3 +148,22 @@ Hugging Face의 accelerate 라이브러리를 사용하면 대규모 모델을 �
 
 - 09.tranformers_pipeline_gradio.py: gradio를 이용한 웹데코 생성 예시
   - <http://127.0.0.1:7860/>
+
+#### 추가 연습
+
+위의 tutorial을 참고하여 추가 연습을 진행합니다.
+
+##### text-classification
+
+<https://huggingface.co/docs/transformers/main_classes/pipelines>
+
+- 10.tranformers_pipeline_text_classification_01.py: Text Classification 예시
+  - 1. task만 설정 하고 모델 지정 없이 사용
+  - 2. task 없이 모델 지정 하기: 'FacebookAI/roberta-large-mnli'
+    - 분류 범주가 다른 모델: 예제가 아닌 다른 문장 입력
+  - 3. 예제가 아닌 다른 모델 지정: 'BAAI/bge-reranker-v2-m3'
+    - 분류 범주가 다른 모델: 예제가 아닌 다른 문장 입력
+  - 4. 텍스트 감정 분석 모델: 'mrm8488/distilroberta-finetuned-financial-news-sentiment-analysis'
+    - 분류 결과가 동일한 모델 검색: 결과가 예상 대로 나오지 않음
+     
+
