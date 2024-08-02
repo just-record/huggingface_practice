@@ -167,3 +167,14 @@ Hugging Face의 accelerate 라이브러리를 사용하면 대규모 모델을 �
     - 분류 결과가 동일한 모델 검색: 결과가 예상 대로 나오지 않음
      
 
+##### text-generation
+
+- 11.transformers_pipeline_text_generation_01.py: 최신 모델 사용
+  - meta-llama/Meta-Llama-3.1-8B-Instruct: 모델의 접근 시 인증 필요
+    - 입력 항목: 'First Name', 'Last Name', 'Data of birth', 'Country', 'Affitiation', 'Job title'
+    - '라이선스 동의', '개인정보 처리 동의'
+    - 모델 소유자의 승인 필요
+  - Hugging Face의 Access Tokens
+    - 'Profile'(우측 상단) -> 'Settings' -><'Access Tokens' -> '+Create new token'
+    - Token type: Write, Token name: xxx -> 'Create token' -> Copy
+  - Hugging Face login 코드 추가 - Access Token 필요
