@@ -12,3 +12,4 @@ pytesseract
 numpy
 bitsandbytes
 gradio
+python-dotenv

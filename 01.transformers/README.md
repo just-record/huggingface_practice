@@ -178,3 +178,31 @@ Hugging Face의 accelerate 라이브러리를 사용하면 대규모 모델을 �
     - 'Profile'(우측 상단) -> 'Settings' -><'Access Tokens' -> '+Create new token'
     - Token type: Write, Token name: xxx -> 'Create token' -> Copy
   - Hugging Face login 코드 추가 - Access Token 필요
+  - CUDA out of memory
+    - 우선 실행 시 시간이 너무 오래 걸림. 
+    - torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 224.00 MiB. GPU 0 has a total capacity of 23.68 GiB of which 119.06 MiB is free. Including non-PyTorch memory, this process has 23.49 GiB memory in use. Of the allocated memory 23.24 GiB is allocated by PyTorch, and 1.17 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+### Write portable code with AutoClass
+
+<https://huggingface.co/docs/transformers/autoclass_tutorial>
+
+AutoClass는 주어진 체크포인트에서 올바른 아키텍처를 자동으로 추론하고 로드합니다. from_pretrained() 메소드를 사용하면 어떤 아키텍처의 사전 훈련된 모델도 빠르게 로드할 수 있어, 모델을 처음부터 훈련하는 데 시간과 리소스를 들일 필요가 없습니다. 이러한 체크포인트에 구애받지 않는 코드를 작성하면, 한 체크포인트에서 작동하는 코드는 아키텍처가 다르더라도 유사한 작업을 위해 훈련된 다른 체크포인트에서도 작동할 것입니다.
+
+- Architecture (아키텍처): 아키텍처는 모델의 구조나 "뼈대"를 의미
+  - 예를 들어, BERT, GPT, ResNet 등이 각각 다른 아키텍처입니다.
+- Checkpoint (체크포인트): 특정 아키텍처에 대해 학습된 가중치(weights)의 집합
+  - 예를 들어, 'google-bert/bert-base-uncased'는 BERT 아키텍처의 한 체크포인트
+- Model (모델): 아키텍처나 체크포인트를 모두 지칭할 수 있어 문맥에 따라 모델이 아키텍처를 의미할 수도 있고, 특정 체크포인트를 의미할 수도 있음
+  - 예를 들어, "BERT 모델"이라고 할 때는 BERT 아키텍처를 의미할 수 있지만, "사전 훈련된 BERT 모델을 로드했다"라고 하면 특정 체크포인트를 의미할 가능성이 높습니다.
+
+#### AutoTokenizer
+
+거의 모든 NLP 작업은 토크나이저로 시작합니다. 토크나이저는 입력을 모델이 처리할 수 있는 형식으로 변환합니다.
+
+- 12.transformers_autoclass_autotokenizer.py: 'AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")'
+
+#### AutoImageProcessor
+
+비전 작업의 경우, 이미지 프로세서는 이미지를 올바른 입력 형식으로 처리합니다.
+
+- 13.transformers_autoclass_autoimageprocessor.py: 
