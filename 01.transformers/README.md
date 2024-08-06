@@ -205,4 +205,18 @@ AutoClass는 주어진 체크포인트에서 올바른 아키텍처를 자동으
 
 비전 작업의 경우, 이미지 프로세서는 이미지를 올바른 입력 형식으로 처리합니다.
 
-- 13.transformers_autoclass_autoimageprocessor.py: 
+- 13.transformers_autoclass_autoimageprocessor.py: 'AutoImageProcessor.from_pretrained("google/vit-base-patch16-224")'
+
+#### AutoBackbone
+
+AutoBackbone은 사전 훈련된 모델을 백본으로 사용하여 백본의 다양한 단계에서 특징 맵을 얻을 수 있게 해줍니다.
+
+- 14.transformers_autoclass_autobackbone.py: 'AutoBackbone.from_pretrained("microsoft/swin-tiny-patch4-window7-224", out_indices=(1,))'
+  - 'out_indices': 특징 맵을 얻고자 하는 레이어의 인덱스
+  - 'out_features': 특징 맵을 얻고자 하는 레이어의 이름
+
+#### AutoFeatureExtractor
+
+오디오 작업의 경우, 특성 추출기가 오디오 신호를 올바른 입력 형식으로 처리합니다.
+
+- 15.transformers_autoclass_autofeatureextractor.py: 
