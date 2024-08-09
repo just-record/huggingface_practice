@@ -31,3 +31,7 @@ Quickstart
 - Authentication
 
 나머지는 필요하다 싶을 때 진행
+
+## Inference API(serverless)
+
+- Detailed parameters
