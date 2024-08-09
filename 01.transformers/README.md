@@ -219,4 +219,42 @@ AutoBackbone은 사전 훈련된 모델을 백본으로 사용하여 백본의 �
 
 오디오 작업의 경우, 특성 추출기가 오디오 신호를 올바른 입력 형식으로 처리합니다.
 
-- 15.transformers_autoclass_autofeatureextractor.py: 
+- 15.transformers_autoclass_autofeatureextractor.py
+
+#### AutoModel
+
+Pytorch: AutoModelFor 클래스를 사용하면 주어진 작업에 대해 사전 훈련된 모델을 로드할 수 있습니다. 예제만 봐선 이해가 어렵습니다.
+
+- 16.transformers_autoclass_automodelfor.py 
+  - DistilBERT는 BERT(Bidirectional Encoder Representations from Transformers)의 경량화 버전입니다. 원래 BERT 모델의 성능을 거의 유지하면서도 크기와 속도 면에서 개선된 모델입니다.
+  - "base": 기본 크기의 모델을 의미합니다 (대형 모델도 있습니다).
+  - "uncased": 텍스트를 소문자로 변환하여 대소문자를 구분하지 않는 모델임을 나타냅니다.
+
+##### Quick tour 중 일부
+
+<https://huggingface.co/docs/transformers/quicktour#autoclass>
+
+AutoModelForSequenceClassification과 AutoTokenizer 클래스는 내부적으로 함께 작동하여 위에서 사용한 **pipeline()**을 구동합니다. AutoClass는 사전 훈련된 모델의 아키텍처를 그 이름이나 경로로부터 자동으로 불러오는 단축 방법입니다. 여러분은 단지 작업에 적합한 AutoClass와 그에 연관된 전처리 클래스를 선택하기만 하면 됩니다.
+
+> AutoTokenizer
+
+토크나이저는 텍스트를 모델의 입력으로 사용할 숫자 배열로 전처리하는 역할을 합니다. 토큰화 과정을 관리하는 여러 규칙이 있으며, 여기에는 단어를 어떻게 분할할지, 어느 수준에서 단어를 분할해야 할지 등이 포함됩니다. 가장 중요한 것은 모델이 사전 훈련된 것과 동일한 토큰화 규칙을 사용하고 있음을 보장하기 위해 같은 모델 이름으로 토크나이저를 인스턴스화해야 한다는 점입니다.
+
+토크나이저가 반환하는 딕셔너리에는 다음이 포함됩니다:
+- input_ids: 토큰의 수치적 표현입니다.
+- attention_mask: 어떤 토큰에 주의를 기울여야 하는지를 나타냅니다.
+
+- 17.transformers_autoclass_autotokenizer.py
+  - nlptown/bert-base-multilingual-uncased-sentiment
+    - nlptown: 이 모델을 개발하고 공개한 조직 또는 사용자의 이름
+    - bert: 이 모델의 기본 구조가 BERT 아키텍처를 사용
+    - base: BERT의 기본 크기 버전 -'small'보다 크고 'large'보다 작은 모델
+    - multilingual: 다국어 지원
+    - uncased: 대소문자 구분 없음
+    - sentiment: 감성 분석 - 긍정/부정
+
+> AutoModel
+
+Transformers는 사전 훈련된 인스턴스를 로드하는 간단하고 통일된 방법을 제공합니다. 이는 AutoTokenizer를 로드하는 것과 같은 방식으로 AutoModel을 로드할 수 있다는 것을 의미합니다. 유일한 차이점은 작업에 맞는 올바른 AutoModel을 선택하는 것입니다. 텍스트(또는 시퀀스) 분류의 경우, AutoModelForSequenceClassification을 로드해야 합니다.
+
+- 18.transformers_autoclass_automodelfor.py
