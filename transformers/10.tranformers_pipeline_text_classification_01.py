@@ -67,4 +67,12 @@ outs = pipe("This restaurant is awesome")
 print(outs)
 # [{'label': 'neutral', 'score': 0.9986506104469299}]
 # positive, neutral, negative 중 하나로
-# 결과가 예상 밖인데
+# 결과가 예상 밖인데 => 금융 데이터를 학습한 모델이라서 그런 것 같음
+# 모델 카드의 설명: 
+#   This model is a fine-tuned version of distilroberta-base on the financial_phrasebank dataset. It achieves the following results on the evaluation set 
+#   => 이 모델은 financial_phrasebank 데이터셋에 대해 미세 조정된 distilroberta-base의 버전입니다. 평가 세트에서 다음과 같은 결과를 얻었습니다:
+
+print('-'*30)
+outs = pipe("Operating profit totaled EUR 9.4 mn , down from EUR 11.7 mn in 2004 .")
+print(outs)
+# [{'label': 'negative', 'score': 0.9987391829490662}]
