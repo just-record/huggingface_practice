@@ -128,7 +128,7 @@ Vision 작업에 'pipeline()'을 사용하는 것은 실제로 거의 동일
 
 - 07.tranformers_pipeline_multimodal.py: Multimodal 작업의 pipeline 사용 예시
   - 오류 발생: AttributeError: 'list' object has no attribute 'numpy'
-  - 원인을 찾아야 함
+  - 원인을 찾아야 함 => pip install --upgrade transformers => 해결 됨
 
 ```bash
 # 설치 필요

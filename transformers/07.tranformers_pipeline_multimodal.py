@@ -7,3 +7,7 @@ output = vqa(
 )
 output[0]["score"] = round(output[0]["score"], 3)
 print(output)
+# [{'score': 0.425, 'answer': 'us-001', 'start': 16, 'end': 16}]
+
+# AttributeError: 'list' object has no attribute 'numpy' => 오류 발생 시 
+# pip install --upgrade transformers
