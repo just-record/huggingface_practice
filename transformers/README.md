@@ -93,7 +93,10 @@ pipeline은 대규모 데이터셋에 대해 추론을 실행할 수 있으며 �
 - 04.tranformers_pipeline_dataset.py: Dataset 사용 예시
   - 1. iterator(yield 사용)를 사용한 Dataset 사용
   - 2. Hugging Face의 Datasets 사용 - hf-internal-testing/librispeech_asr_dummy
-    - 결과가 이상 함(원인 찾아야 함)
+    - 결과: 결과가 text로 나오지 않음
+      - hf-internal-testing/librispeech_asr_dummy이 모델 목록에서 검색 되지 않음
+      - hf-internal-testing 에서 test용 모델 인 듯    
+    - 앞 코드의 모델로 변경(openai/whisper-large-v2) -> 정상 작동
   - 3. 다른 Datasets 사용 - PolyAI/minds14
     - https://huggingface.co/docs/transformers/quicktour#pipeline
 
