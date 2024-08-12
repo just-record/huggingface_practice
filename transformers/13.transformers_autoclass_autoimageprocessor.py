@@ -46,3 +46,6 @@ print("입력 이미지의 타입:", type(inputs))
 # 전처리된 이미지의 주요 속성 출력
 for key, value in inputs.items():
     print(f"{key}: {type(value)} - shape: {value.shape}")
+# 전처리된 이미지 텐서 shape: torch.Size([1, 3, 224, 224])
+# 입력 이미지의 타입: <class 'transformers.image_processing_base.BatchFeature'>
+# pixel_values: <class 'torch.Tensor'> - shape: torch.Size([1, 3, 224, 224])    
