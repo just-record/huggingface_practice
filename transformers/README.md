@@ -261,3 +261,48 @@ AutoModelForSequenceClassification과 AutoTokenizer 클래스는 내부적으로
 Transformers는 사전 훈련된 인스턴스를 로드하는 간단하고 통일된 방법을 제공합니다. 이는 AutoTokenizer를 로드하는 것과 같은 방식으로 AutoModel을 로드할 수 있다는 것을 의미합니다. 유일한 차이점은 작업에 맞는 올바른 AutoModel을 선택하는 것입니다. 텍스트(또는 시퀀스) 분류의 경우, AutoModelForSequenceClassification을 로드해야 합니다.
 
 - 18.transformers_autoclass_automodelfor.py
+
+### Preprocess data
+
+<https://huggingface.co/docs/transformers/preprocessing#natural-language-processing>
+
+- 모델에서 데이터셋을 학습하기 전에, 모델 입력 형식으로 전처리가 필요
+- 🤗 Transformers는 데이터를 모델에 맞게 준비하는 데 도움이 되는 전처리 클래스 세트를 제공
+
+✔️ 데이터 유형별 전처리 도구
+
+- 텍스트: Tokenizer
+- 음성/오디오: Feature extractor
+- 이미지: ImageProcessor
+- 복합데이터: Processor
+
+AutoProcessor: 모델에 맞는 전처리 도구를 자동으로 선택. 어떤 데이터 유형이든 알아서 처리.
+
+✔️ 설치
+
+```bash
+pip install datasets
+```
+
+#### Natural Language Processing
+
+토크나이저: 텍스트 데이터 전처리의 핵심 도구
+
+1. 역할
+- 텍스트를 규칙에 따라 *토큰*으로 분리
+- 토큰을 숫자로 변환
+- 숫자를 텐서로 변환 (모델 입력용)
+- 모델에 필요한 추가 입력도 자동 생성
+
+2. 사전 학습 모델 사용시 주의사항
+- 반드시 해당 모델의 사전 학습된 토크나이저를 사용해야 함
+- 이유: 사전 학습 때와 동일한 방식으로 텍스트 분리 필요
+- 동일한 토큰-인덱스 매핑(*vocab*) 사용 보장
+
+3. 사용 방법
+```python
+# 사전 학습된 토크나이저 불러오기
+tokenizer = AutoTokenizer.from_pretrained('모델명')
+```
+- 모델이 사전 학습에 사용한 vocab을 자동으로 다운로드합니다.
+
