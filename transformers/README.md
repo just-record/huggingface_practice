@@ -299,10 +299,43 @@ pip install datasets
 - 이유: 사전 학습 때와 동일한 방식으로 텍스트 분리 필요
 - 동일한 토큰-인덱스 매핑(*vocab*) 사용 보장
 
-3. 사용 방법
-```python
-# 사전 학습된 토크나이저 불러오기
-tokenizer = AutoTokenizer.from_pretrained('모델명')
-```
-- 모델이 사전 학습에 사용한 vocab을 자동으로 다운로드합니다.
+- 19.transformers_preprocess_nlp.py
+  - tokenizer: 숫자로 변환
+  - tokenizer.decode: 토큰을 다시 텍스트로 변환
+  - batch: 여러 문장을 한 번에 처리
 
+✔️ Pad
+
+1. 문제점:
+- 문장들의 길이가 서로 다름
+- 모델 입력(텐서)은 균일한 크기가 필요
+- 길이가 다르면 텐서로 변환 불가
+
+2. 해결방법: 패딩(Padding)
+- 짧은 문장에 특별한 *패딩 토큰*을 추가
+- 가장 긴 문장 길이에 맞춰 나머지 문장들을 채움
+
+- 20.transformers_preprocess_nlp_pad.py
+
+✔️ Truncation
+
+1. 문제점:
+- 문장이 모델이 처리할 수 있는 길이보다 긴 경우
+- 모델마다 처리할 수 있는 최대 길이가 정해져 있음
+
+2. 해결방법: 잘라내기(Truncation)
+- 긴 문장을 모델의 최대 허용 길이에 맞게 자름
+
+- 21.transformers_preprocess_nlp_truncation.py
+
+✔️ Build tensors
+
+1. 목적:
+- 모델 입력용 텐서 생성
+- PyTorch 또는 TensorFlow 형식으로 변환
+
+- 22.transformers_preprocess_nlp_build_tensors.py
+
+#### Audio, Computer Vision, Multimodal
+
+추후 필요 시 진행

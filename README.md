@@ -20,6 +20,8 @@ Tutorials
   - AutoFeatureExtractor
   - AutoProcessor
   - AutoModel
+- Preprocess data
+  - Natural Language Processing
 
 나머지는 좀 더 사용해 보고 진행
 
