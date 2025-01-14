@@ -1,5 +1,9 @@
 # Hugging Face Practice
 
+- Hugging Face 공식문서를 연습
+- github: <https://github.com/just-record/huggingface_practice>
+- server: GPU2 - `/home/dev/app/source_code/vllm_practice`
+
 ## Transformers
 
 Tutorials
